@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Slim 3</title>
+    <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            margin: 100px 0 0 0;
+            padding: 0;
+            width: 100%;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        h1 {
+            color: #719e40;
+            letter-spacing: -3px;
+            font-family: 'Lato', sans-serif;
+            font-size: 100px;
+            font-weight: 200;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>All Employees</h1>
+<br>
+<form class="navbar-form navbar-right" action="/" method="get" id="search-form">
+    <div class="input-group">
+        <input type="text" class="form-control" name="query" placeholder="Buscar Email ..."/>
+        <span class="input-group-btn">
+                <button class="btn" type="submit" form="search-form">BUSCAR</button>
+            </span>
+    </div>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Position</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php $i = 1;
+    foreach ($data as $list): ?>
+
+        <tr>
+            <td><?= $i++ ?></td>
+            <td><?= $list['name'] ?></td>
+            <td><?= $list['email'] ?></td>
+            <td><?= $list['position'] ?></td>
+            <td><?= $list['salary'] ?></td>
+            <td>
+                <a href="<?= $router->pathFor('employee-detail', ['id' => $list['id']]) ?>">view</a>
+            </td>
+        </tr>
+
+    <?php endforeach; ?>
+    </tbody>
+</table>
+</body>
+</html>
