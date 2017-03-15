@@ -4,9 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "25c8fb73f5b0be8c31abfcc9fea92233",
-    "content-hash": "5e16cb7781829836a704bd8767830833",
+    "hash": "7fcddcb6936fd7cb4e4df23880ec5b27",
+    "content-hash": "de89034e0d2b7f1094cbf1fb6333b38e",
     "packages": [
+        {
+            "name": "akrabat/rka-content-type-renderer",
+            "version": "0.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akrabat/rka-content-type-renderer.git",
+                "reference": "5373f481a46ed831d8085f8825c48b035a7311f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akrabat/rka-content-type-renderer/zipball/5373f481a46ed831d8085f8825c48b035a7311f6",
+                "reference": "5373f481a46ed831d8085f8825c48b035a7311f6",
+                "shasum": ""
+            },
+            "require": {
+                "psr/http-message": "^1.0",
+                "willdurand/negotiation": "^2.0"
+            },
+            "require-dev": {
+                "crell/api-problem": "^2.0",
+                "nocarrier/hal": "^0.9.11",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "^2.3",
+                "zendframework/zend-diactoros": "^1.1"
+            },
+            "suggest": {
+                "crell/api-problem": "For creating Api-Problem (RFC7801) data that can be rendered using ApiProblemRenderer",
+                "nocarrier/hal": "For creating HAL documents that can be rendered using HalRenderer"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RKA\\ContentTypeRenderer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Allen",
+                    "email": "rob@akrabat.com",
+                    "homepage": "http://akrabat.com"
+                }
+            ],
+            "description": "Render an array to a JSON/XML/HTML PSR-7 Response based on a PSR-7 Request's Accept header.",
+            "homepage": "http://github.com/akrabat/rka-content-type-renderer",
+            "keywords": [
+                "json",
+                "psr7",
+                "xml"
+            ],
+            "time": "2017-01-28 22:07:35"
+        },
         {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
@@ -469,6 +524,58 @@
                 "router"
             ],
             "time": "2016-12-20 20:30:47"
+        },
+        {
+            "name": "willdurand/negotiation",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willdurand/Negotiation.git",
+                "reference": "1f210db45723b21edd69f39794662b8d64656b93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/1f210db45723b21edd69f39794662b8d64656b93",
+                "reference": "1f210db45723b21edd69f39794662b8d64656b93",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Negotiation\\": "src/Negotiation"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "will+git@drnd.me"
+                }
+            ],
+            "description": "Content Negotiation tools for PHP provided as a standalone library.",
+            "homepage": "http://williamdurand.fr/Negotiation/",
+            "keywords": [
+                "accept",
+                "content",
+                "format",
+                "header",
+                "negotiation"
+            ],
+            "time": "2016-10-14 09:17:47"
         }
     ],
     "packages-dev": [

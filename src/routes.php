@@ -1,7 +1,10 @@
 <?php
-// Routes
+
 $data = file_get_contents(__DIR__ . "/employees.json");
 $list = json_decode($data, true);
+
+
+
 
 $app->get('/', function ($request, $response, $args) use ($list,$app) {
     $query=$request->getQueryParams()['query'];
@@ -23,18 +26,18 @@ $app->get('/employee/{id}', function ($request, $response, $args) use ($list) {
 })->setName("employee-detail");
 
 
-//$app ->get('/search/{min}', function() use ($app,$request,$response) {
-//    var_dump($request->getAttribute('min'));exit;
-//    $articles = Model::factory('Article') -> order_by_desc('timestamp') -> find_many();
-//
-//    $app->response->headers->set('Content-Type', 'text/xml');
-//
-//  return $app -> render('rss.xml', array('articles' => $articles));
-//})->setName("search");
-
 
 $app->get("/search/{min}/{max}", function ($request,$response) use ($app,$list) {
-//    $app->response()->header("Content-Type", "application/json");
-    return $this->renderer->render($response, 'service.xml');
-    echo json_encode($list);
-})->setName('service');
+
+    foreach ($list as $k=>$v) {
+        $salary = str_replace(",", "", str_replace("$", "", $v['salary']));
+
+        if (!($salary >= $request->getAttribute('min') && $salary <= $request->getAttribute('max'))) {
+            unset($list[$k]);
+        }
+    }
+    $renderer = new RKA\ContentTypeRenderer\Renderer();
+    $response = $renderer->render($request, $response, $list);
+    $response = $response->withHeader('Content-type', 'text/xml');
+    return $response->withStatus(200);
+});
